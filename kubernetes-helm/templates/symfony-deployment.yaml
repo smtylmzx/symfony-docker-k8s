@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: symfony-kubernetes-ns
+    name: symfony-deployment
+    labels:
+        app: symfony
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: symfony
+    template:
+        metadata:
+            labels:
+                app: symfony
+        spec:
+            containers:
+                - name: symfony
+                  image: smtylmzx/dockerize-symfony-5.2.5:1.0.0
+                  ports:
+                      - containerPort: 80

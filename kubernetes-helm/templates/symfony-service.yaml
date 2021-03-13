@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+    namespace: symfony-kubernetes-ns
+    name: symfony-service
+spec:
+    selector:
+        app: symfony
+    type: LoadBalancer
+    ports:
+        - protocol: TCP
+          port: 8087
+          targetPort: 80
