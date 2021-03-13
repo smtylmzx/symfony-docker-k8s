@@ -3,7 +3,7 @@ FROM php:7.2-fpm
 RUN apt-get update -y \
     && apt-get install -y nginx
 
-COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx/default-k8s.conf /etc/nginx/conf.d/default.conf
 
 COPY ./symfony /var/www/app
 

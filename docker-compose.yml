@@ -3,20 +3,22 @@ version: '3'
 services:
     nginx:
         image: nginx:stable-alpine
+        container_name: docker-symfony-nginx
         ports:
             - '8088:80'
         volumes:
-            - ./:/var/www/app
-            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./symfony/:/var/www/app
+            - ./docker/nginx/default-compose.conf:/etc/nginx/conf.d/default-compose.conf
         networks:
             - symfony
     php:
         build:
             context: ./docker/php
+        container_name: docker-symfony-php
         environment:
             APP_ENV: dev
         volumes:
-            - ./:/var/www/app
+            - ./symfony/:/var/www/app
         ports:
             - '9003:9000'
         networks:
